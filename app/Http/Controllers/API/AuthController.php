@@ -59,7 +59,8 @@ class AuthController extends Controller
         }
 
         $user = User::where(['email' => $request->email])->first();
+        $token = $user->api_token;
 
-        return response(['message' => 'User authenticated', 'token' => $user->auth_token]);
+        return response(['message' => 'User authenticated', 'token' => $token]);
     }
 }
